@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'donasi/donasi_page.dart';
+import 'marketplace/screens/dropoff_list_page.dart';
+import 'marketplace/screens/product_list_page.dart';
+import 'marketplace/widgets/menu_card.dart';
 
 class ReBatikPage extends StatelessWidget {
   const ReBatikPage({super.key});
@@ -20,7 +23,7 @@ class ReBatikPage extends StatelessWidget {
         elevation: 0,
       ),
 
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +68,7 @@ class ReBatikPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.brown.withOpacity(0.10),
+                    color: Colors.brown.withValues(alpha: 0.10),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -138,6 +141,24 @@ class ReBatikPage extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+
+            // MENU MARKETPLACE & DROP-OFF POINT (Modul 3)
+            MenuCard(
+              icon: Icons.storefront,
+              title: 'Marketplace Upcycling',
+              description:
+                  'Belanja produk hasil upcycling kain dan pakaian bekas bermotif batik.',
+              buttonLabel: 'Buka Marketplace',
+              destination: (context) => const ProductListPage(),
+            ),
+            MenuCard(
+              icon: Icons.place,
+              title: 'Drop-Off Point',
+              description:
+                  'Temukan lokasi pengumpulan kain atau pakaian bekas terdekat.',
+              buttonLabel: 'Lihat Drop-Off Point',
+              destination: (context) => const DropOffListPage(),
             ),
           ],
         ),

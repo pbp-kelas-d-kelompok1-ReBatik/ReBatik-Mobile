@@ -1,30 +1,79 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:rebatik_mobile/main.dart';
+import 'package:rebatik_mobile/pages/marketplace/marketplace_style.dart';
+import 'package:rebatik_mobile/pages/marketplace/models/dropoff_point.dart';
+import 'package:rebatik_mobile/pages/marketplace/models/product.dart';
+
+Future<void> _tapMenuButton(WidgetTester tester, String label) async {
+  final button = find.text(label);
+  await tester.scrollUntilVisible(button, 200);
+  await tester.tap(button);
+  await tester.pumpAndSettle();
+}
+
+Future<void> _goBack(WidgetTester tester) async {
+  await tester.pageBack();
+  await tester.pumpAndSettle();
+}
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('Halaman utama membuka Donasi, Marketplace, dan Drop-Off Point',
+      (tester) async {
     await tester.pumpWidget(const MyApp());
+    expect(find.text('Selamat Datang di ReBatik!'), findsOneWidget);
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    await _tapMenuButton(tester, 'Buka Halaman Donasi');
+    expect(find.text('Donasi ReBatik'), findsOneWidget);
+    await _goBack(tester);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    await _tapMenuButton(tester, 'Buka Marketplace');
+    expect(find.widgetWithText(AppBar, 'Marketplace'), findsOneWidget);
+    expect(find.text('Cari produk, motif, atau pengrajin'), findsOneWidget);
+    await _goBack(tester);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await _tapMenuButton(tester, 'Lihat Drop-Off Point');
+    expect(find.widgetWithText(AppBar, 'Drop-Off Point'), findsOneWidget);
+  });
+
+  test('formatRupiah memakai pemisah ribuan titik', () {
+    expect(formatRupiah(0), 'Rp0');
+    expect(formatRupiah(5000), 'Rp5.000');
+    expect(formatRupiah(1250000), 'Rp1.250.000');
+  });
+
+  test('Product dan DropOffPoint dibaca dari JSON API', () {
+    final product = Product.fromJson({
+      'id': 1,
+      'name': 'Tas Perca Parang',
+      'motif': 'Parang',
+      'category': 'TAS',
+      'category_display': 'Tas',
+      'description': '',
+      'badge_status': null,
+      'material_source': 'Kain perca',
+      'artisan_origin': 'Solo',
+      'price': 150000,
+      'stock': 2,
+      'is_in_stock': true,
+      'image_url': '',
+    });
+    expect(product.imageUrl, isNull);
+    expect(product.isInStock, isTrue);
+
+    final point = DropOffPoint.fromJson({
+      'id': 7,
+      'code': 'rbt-dpk-01',
+      'name': 'Drop-off Margonda',
+      'address': 'Jl. Margonda',
+      'city': 'Depok',
+      'province': 'Jawa Barat',
+      'operating_hours': '08:30 - 20:00 WIB',
+      'phone': '0812',
+      'accepted_items': ['Kain Perca Batik'],
+      'maps_url': null,
+    });
+    expect(point.acceptedItems, ['Kain Perca Batik']);
   });
 }

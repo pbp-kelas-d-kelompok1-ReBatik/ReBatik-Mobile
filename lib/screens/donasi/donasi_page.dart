@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rebatik_mobile/widgets/left_drawer.dart';
 
 class DonasiPage extends StatelessWidget {
   const DonasiPage({super.key});
@@ -16,6 +17,7 @@ class DonasiPage extends StatelessWidget {
         backgroundColor: const Color(0xFF795548),
         foregroundColor: Colors.white,
       ),
+      drawer: const LeftDrawer(),
 
       body: Center(
         child: Padding(

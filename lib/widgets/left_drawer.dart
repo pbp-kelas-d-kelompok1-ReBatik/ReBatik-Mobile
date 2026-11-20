@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rebatik_mobile/screens/batik_story/batik_story_page.dart';
+import 'package:rebatik_mobile/screens/donasi/donasi_page.dart';
+
+import 'package:rebatik_mobile/screens/menu.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -59,10 +63,10 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.palette),
             title: const Text('Batik Custom'),
             onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const BatikCustomPage()),
-              );
+              // Navigator.pushReplacement(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const BatikCustomPage()),
+              // );
             },
           ),
           ListTile(

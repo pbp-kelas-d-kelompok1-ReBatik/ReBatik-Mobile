@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'pages/rebatik_pages.dart';
+import 'package:rebatik_mobile/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
       ),
 
       // Halaman utama aplikasi
-      home: const ReBatikPage(),
+      home:  ReBatikPage(),
 
       // Daftar navigasi halaman
-      routes: {'/rebatik': (context) => const ReBatikPage()},
+      routes: {'/rebatik': (context) =>  ReBatikPage()},
     );
   }
 }

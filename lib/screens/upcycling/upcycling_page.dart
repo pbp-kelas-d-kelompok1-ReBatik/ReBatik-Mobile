@@ -6,7 +6,7 @@ import '../../core/theme/app_fonts.dart';
 import '../../core/widgets/primary_action_button.dart';
 import '../../core/widgets/rebatik_scaffold.dart';
 
-/// Halaman daftar permintaan Upcycling dalam bentuk empty state awal.
+/// Halaman daftar permintaan Upcycling dengan empty state awal.
 ///
 /// Pada checkpoint berikutnya, area ini dapat diisi daftar permintaan dari API
 /// dan tombol aksi dapat diarahkan ke formulir pembuatan permintaan.

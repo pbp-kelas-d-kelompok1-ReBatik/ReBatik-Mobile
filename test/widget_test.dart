@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:rebatik_mobile/main.dart';
-import 'package:rebatik_mobile/pages/marketplace/marketplace_style.dart';
-import 'package:rebatik_mobile/pages/marketplace/models/dropoff_point.dart';
-import 'package:rebatik_mobile/pages/marketplace/models/product.dart';
+import 'package:rebatik_mobile/screens/marketplace/marketplace_style.dart';
+import 'package:rebatik_mobile/screens/marketplace/models/dropoff_point.dart';
+import 'package:rebatik_mobile/screens/marketplace/models/product.dart';
 
 Future<void> _tapMenuButton(WidgetTester tester, String label) async {
   final button = find.text(label);
@@ -14,8 +14,11 @@ Future<void> _tapMenuButton(WidgetTester tester, String label) async {
 }
 
 Future<void> _goBack(WidgetTester tester) async {
+  final pageBackButton = find.text('Kembali ke ReBatik');
   final rebatikBackButton = find.byTooltip('Kembali');
-  if (rebatikBackButton.evaluate().isNotEmpty) {
+  if (pageBackButton.evaluate().isNotEmpty) {
+    await tester.tap(pageBackButton);
+  } else if (rebatikBackButton.evaluate().isNotEmpty) {
     await tester.tap(rebatikBackButton);
   } else {
     await tester.pageBack();
@@ -72,6 +75,7 @@ void main() {
       'is_in_stock': true,
       'image_url': '',
     });
+
     expect(product.imageUrl, isNull);
     expect(product.isInStock, isTrue);
 
@@ -87,6 +91,7 @@ void main() {
       'accepted_items': ['Kain Perca Batik'],
       'maps_url': null,
     });
+
     expect(point.acceptedItems, ['Kain Perca Batik']);
   });
 }

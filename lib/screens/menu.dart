@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rebatik_mobile/screens/batik_custom/batik_custom_page.dart';
+import 'package:rebatik_mobile/screens/batik_story/batik_story_page.dart';
 
 import 'donasi/donasi_page.dart';
 import 'marketplace/screens/dropoff_list_page.dart';
@@ -152,6 +154,24 @@ class ReBatikPage extends StatelessWidget {
                   'Ubah kain tak terpakai menjadi karya baru yang bernilai.',
               buttonLabel: 'Buka Upcycling',
               destination: (context) => const UpcyclingPage(),
+            ),
+
+            // MENU BATIK STORY
+            MenuCard(
+              icon: Icons.menu_book,
+              title: 'Batik Story',
+              description: 'Jelajahi keindahan motif batik Indonesia dan kenali sejarah serta makna filosofisnya.',
+              buttonLabel: 'Jelajahi Batik Story',
+              destination: (context) => const BatikStoryPage(),
+            ),
+
+            // MENU BATIK CUSTOM
+            MenuCard(
+              icon: Icons.palette,
+              title: 'Batik Custom',
+              description: 'Ciptakan gaya fashion batik sesuai selera dengan pilihan style dan warna favoritmu.',
+              buttonLabel: 'Mulai Custom',
+              destination: (context) => const BatikCustomPage(),
             ),
 
             // MENU MARKETPLACE & DROP-OFF POINT (Modul 3)

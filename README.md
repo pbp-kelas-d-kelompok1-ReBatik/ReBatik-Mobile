@@ -10,24 +10,11 @@ menjadi karya baru bernuansa batik Nusantara.
 ![Django REST Framework](https://img.shields.io/badge/Django_REST-092E20?logo=django&logoColor=white)
 ![Material 3](https://img.shields.io/badge/Material_3-teal)
 
-[Tentang](#tentang) · [Modul](#modul) · [Alur Pengguna](#alur-pengguna) · [Arsitektur](#arsitektur) · [API](#referensi-api) · [Menjalankan](#menjalankan) · [Tim](#tim)
+[Tentang](#tentang) · [Modul](#modul) · [Alur Pengguna](#alur-pengguna) · [Arsitektur](#arsitektur) · [API](#referensi-api) · [Menjalankan](#menjalankan) · [Tim](#tim) · [Troubleshooting](#troubleshooting--masalah-umum)
 
 </div>
 
 ---
-
-## Tim
-
-**Kelompok 1 · PBP-D**
-
-| Nama | NPM | Tanggung jawab |
-|------|-----|----------------|
-| Ausy Dhafa Adhitama | 2406417954 | Modul 1: Landing Page & Impact Tracker |
-| Alisa Selvia Saharani | 2506618433 | Modul 2: Batik Custom & Batik Story, autentikasi, navbar, notifikasi, pengaturan |
-| Ahyan Timuardi | 2506547203 | Modul 3: Marketplace & Drop-Off Point |
-| Rani Faizah A | 2506624013 | Modul 4: Donasi Kain/Pakaian & Profile |
-| M. Rezky Syahputra | 2506614006 | Modul 5: Upcycling Request & Points/Reward |
-
 
 ## Tentang
 
@@ -68,6 +55,18 @@ punya modul yang menjawabnya.
 **Untuk siapa:** mahasiswa dan pekerja yang punya pakaian tidak terpakai, pencinta batik yang
 ingin desain sendiri, pembeli produk ramah lingkungan, dan siapa pun yang ingin mengurangi
 limbah tekstil.
+
+## Tim
+
+**Kelompok 1 · PBP-D**
+
+| Nama | NPM | Tanggung jawab |
+|------|-----|----------------|
+| Ausy Dhafa Adhitama | 2406417954 | Modul 1: Landing Page & Impact Tracker |
+| Alisa Selvia Saharani | 2506618433 | Modul 2: Batik Custom & Batik Story, autentikasi, navbar, notifikasi, pengaturan |
+| Ahyan Timuardi | 2506547203 | Modul 3: Marketplace & Drop-Off Point |
+| Rani Faizah A | 2506624013 | Modul 4: Donasi Kain/Pakaian & Profile |
+| M. Rezky Syahputra | 2506614006 | Modul 5: Upcycling Request & Points/Reward |
 
 ## Modul
 
@@ -215,6 +214,17 @@ perangkat fisik, gunakan alamat PWS di atas.
 | `flutter test` | Menjalankan widget test |
 | `flutter build apk --release` | Membangun APK rilis |
 
+## Troubleshooting & Masalah Umum
+
+| Gejala / Pesan Error | Kemungkinan Penyebab | Solusi |
+|---|---|---|
+| `flutter: command not found` | Jalur folder `flutter/bin` belum terdaftar pada variabel `PATH`. | Masukkan jalur lengkap folder `flutter/bin` ke System/User Environment Variables `PATH`, simpan, lalu buka sesi terminal baru. |
+| `Some Android licenses not accepted` | Lisensi komponen SDK Android belum disetujui. | Jalankan `flutter doctor --android-licenses` di terminal dan ketik `y` pada setiap pertanyaan. |
+| `Visual Studio not installed` | Deteksi toolchain Windows C++. | Boleh diabaikan dengan aman jika target eksekusi adalah Android atau Web (Google Chrome). |
+| `Error: The method '...' isn't defined for the class 'MyHomePage'` | Ada kurung kurawal `{}` yang salah tutup atau penempatan method di luar kelas. | Periksa kembali struktur kurung kurawal pada berkas `menu.dart`. Pastikan method `build` berada di dalam cakupan blok `class MyHomePage`. |
+| `Undefined name 'MyHomePage'` di `main.dart` | Berkas `menu.dart` belum diimpor ke `main.dart`. | Tambahkan baris `import 'package:myportofolio_mobile/menu.dart';` di bagian paling atas `main.dart`. |
+| Proses `flutter run` terhenti lama pada *Running Gradle task ‘assembleDebug’…* | Pertama kali mengunduh file wrapper Gradle dan dependensi Android. | Hal ini wajar pada kompilasi pertama karena Gradle mengunduh file inti. Pastikan koneksi internet stabil dan biarkan proses berjalan beberapa menit. Opsi alternatif yang lebih cepat adalah menjalankan aplikasi pada Google Chrome dengan `flutter run -d chrome`. |
+
 ## Tautan
 
 | | |
@@ -222,4 +232,5 @@ perangkat fisik, gunakan alamat PWS di atas.
 | **Desain UI/UX** | [Figma ReBatik](https://www.figma.com/team_invite/redeem/xncR93E4zlnRJtCDqu4D7p?t=LXe1ZVPkQu6McFi1-21) |
 | **Website dan sumber data** | [alisa-selvia-rebatik.pws.cs.ui.ac.id](https://alisa-selvia-rebatik.pws.cs.ui.ac.id/) |
 | **APK** | Menyusul menjelang pengumpulan akhir |
+
 

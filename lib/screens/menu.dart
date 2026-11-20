@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rebatik_mobile/screens/batik_custom/batik_custom_page.dart';
 import 'package:rebatik_mobile/screens/batik_story/batik_story_page.dart';
+import 'package:rebatik_mobile/widgets/left_drawer.dart';
 
 import 'donasi/donasi_page.dart';
 import 'marketplace/screens/dropoff_list_page.dart';
@@ -14,6 +15,9 @@ class ReBatikPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFAF7F0),
+
+      // Navigation Drawer
+      drawer: const LeftDrawer(),
 
       appBar: AppBar(
         title: const Text(
@@ -45,7 +49,11 @@ class ReBatikPage extends StatelessWidget {
 
             const Text(
               'Mari mengenal dan melestarikan warisan budaya batik Indonesia bersama ReBatik.',
-              style: TextStyle(fontSize: 15, color: Colors.brown, height: 1.5),
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.brown,
+                height: 1.5,
+              ),
             ),
 
             const SizedBox(height: 30),
@@ -76,7 +84,6 @@ class ReBatikPage extends StatelessWidget {
                   ),
                 ],
               ),
-
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -121,9 +128,10 @@ class ReBatikPage extends StatelessWidget {
                           ),
                         );
                       },
-
-                      icon: const Icon(Icons.favorite, color: Colors.white),
-
+                      icon: const Icon(
+                        Icons.favorite,
+                        color: Colors.white,
+                      ),
                       label: const Text(
                         'Buka Halaman Donasi',
                         style: TextStyle(
@@ -131,7 +139,6 @@ class ReBatikPage extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF795548),
                         padding: const EdgeInsets.symmetric(vertical: 15),
@@ -149,7 +156,8 @@ class ReBatikPage extends StatelessWidget {
             MenuCard(
               icon: Icons.menu_book,
               title: 'Batik Story',
-              description: 'Jelajahi keindahan motif batik Indonesia dan kenali sejarah serta makna filosofisnya.',
+              description:
+                  'Jelajahi keindahan motif batik Indonesia dan kenali sejarah serta makna filosofisnya.',
               buttonLabel: 'Jelajahi Batik Story',
               destination: (context) => const BatikStoryPage(),
             ),
@@ -158,23 +166,28 @@ class ReBatikPage extends StatelessWidget {
             MenuCard(
               icon: Icons.palette,
               title: 'Batik Custom',
-              description: 'Ciptakan gaya fashion batik sesuai selera dengan pilihan style dan warna favoritmu.',
+              description:
+                  'Ciptakan gaya fashion batik sesuai selera dengan pilihan style dan warna favoritmu.',
               buttonLabel: 'Mulai Custom',
               destination: (context) => const BatikCustomPage(),
             ),
 
-            // MENU MARKETPLACE & DROP-OFF POINT (Modul 3)
+            // MENU MARKETPLACE
             MenuCard(
               icon: Icons.storefront,
               title: 'Marketplace Upcycling',
-              description: 'Belanja produk hasil upcycling kain dan pakaian bekas bermotif batik.',
+              description:
+                  'Belanja produk hasil upcycling kain dan pakaian bekas bermotif batik.',
               buttonLabel: 'Buka Marketplace',
               destination: (context) => const ProductListPage(),
             ),
+
+            // MENU DROP-OFF POINT
             MenuCard(
               icon: Icons.place,
               title: 'Drop-Off Point',
-              description: 'Temukan lokasi pengumpulan kain atau pakaian bekas terdekat.',
+              description:
+                  'Temukan lokasi pengumpulan kain atau pakaian bekas terdekat.',
               buttonLabel: 'Lihat Drop-Off Point',
               destination: (context) => const DropOffListPage(),
             ),

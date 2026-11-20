@@ -229,7 +229,7 @@ perangkat fisik, gunakan alamat PWS di atas.
 
 | | |
 |---|---|
-| **Desain UI/UX** | [Figma ReBatik](https://www.figma.com/team_invite/redeem/xncR93E4zlnRJtCDqu4D7p?t=LXe1ZVPkQu6McFi1-21) |
+| **Desain UI/UX** | [Figma ReBatik-Mobile](https://www.figma.com/design/Jo15oAt9etr5PZceX6ujjN/Untitled?node-id=0-1&t=UvE7ueFds1UIqElk-1) |
 | **Website dan sumber data** | [alisa-selvia-rebatik.pws.cs.ui.ac.id](https://alisa-selvia-rebatik.pws.cs.ui.ac.id/) |
 | **APK** | Menyusul menjelang pengumpulan akhir |
 

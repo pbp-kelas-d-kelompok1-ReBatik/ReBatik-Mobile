@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rebatik_mobile/screens/batik_custom/batik_custom_page.dart';
+import 'package:rebatik_mobile/screens/batik_story/batik_story_page.dart';
 
 import 'donasi/donasi_page.dart';
 import 'marketplace/screens/dropoff_list_page.dart';
@@ -143,20 +145,36 @@ class ReBatikPage extends StatelessWidget {
               ),
             ),
 
+            // MENU BATIK STORY
+            MenuCard(
+              icon: Icons.menu_book,
+              title: 'Batik Story',
+              description: 'Jelajahi keindahan motif batik Indonesia dan kenali sejarah serta makna filosofisnya.',
+              buttonLabel: 'Jelajahi Batik Story',
+              destination: (context) => const BatikStoryPage(),
+            ),
+
+            // MENU BATIK CUSTOM
+            MenuCard(
+              icon: Icons.palette,
+              title: 'Batik Custom',
+              description: 'Ciptakan gaya fashion batik sesuai selera dengan pilihan style dan warna favoritmu.',
+              buttonLabel: 'Mulai Custom',
+              destination: (context) => const BatikCustomPage(),
+            ),
+
             // MENU MARKETPLACE & DROP-OFF POINT (Modul 3)
             MenuCard(
               icon: Icons.storefront,
               title: 'Marketplace Upcycling',
-              description:
-                  'Belanja produk hasil upcycling kain dan pakaian bekas bermotif batik.',
+              description: 'Belanja produk hasil upcycling kain dan pakaian bekas bermotif batik.',
               buttonLabel: 'Buka Marketplace',
               destination: (context) => const ProductListPage(),
             ),
             MenuCard(
               icon: Icons.place,
               title: 'Drop-Off Point',
-              description:
-                  'Temukan lokasi pengumpulan kain atau pakaian bekas terdekat.',
+              description: 'Temukan lokasi pengumpulan kain atau pakaian bekas terdekat.',
               buttonLabel: 'Lihat Drop-Off Point',
               destination: (context) => const DropOffListPage(),
             ),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:rebatik_mobile/main.dart';
-import 'package:rebatik_mobile/pages/marketplace/marketplace_style.dart';
-import 'package:rebatik_mobile/pages/marketplace/models/dropoff_point.dart';
-import 'package:rebatik_mobile/pages/marketplace/models/product.dart';
+import 'package:rebatik_mobile/screens/marketplace/marketplace_style.dart';
+import 'package:rebatik_mobile/screens/marketplace/models/dropoff_point.dart';
+import 'package:rebatik_mobile/screens/marketplace/models/product.dart';
 
 Future<void> _tapMenuButton(WidgetTester tester, String label) async {
   final button = find.text(label);
@@ -19,9 +19,11 @@ Future<void> _goBack(WidgetTester tester) async {
 }
 
 void main() {
-  testWidgets('Halaman utama membuka Donasi, Marketplace, dan Drop-Off Point',
-      (tester) async {
+  testWidgets('Halaman utama membuka Donasi, Marketplace, dan Drop-Off Point', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(const MyApp());
+
     expect(find.text('Selamat Datang di ReBatik!'), findsOneWidget);
 
     await _tapMenuButton(tester, 'Buka Halaman Donasi');
@@ -59,6 +61,7 @@ void main() {
       'is_in_stock': true,
       'image_url': '',
     });
+
     expect(product.imageUrl, isNull);
     expect(product.isInStock, isTrue);
 
@@ -74,6 +77,7 @@ void main() {
       'accepted_items': ['Kain Perca Batik'],
       'maps_url': null,
     });
+
     expect(point.acceptedItems, ['Kain Perca Batik']);
   });
 }

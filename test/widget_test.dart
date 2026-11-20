@@ -20,6 +20,10 @@ Future<void> _goBack(WidgetTester tester) async {
     await tester.tap(pageBackButton);
   } else if (rebatikBackButton.evaluate().isNotEmpty) {
     await tester.tap(rebatikBackButton);
+  } else if (find.byTooltip('Open navigation menu').evaluate().isNotEmpty) {
+    await tester.tap(find.byTooltip('Open navigation menu'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Beranda'));
   } else {
     await tester.pageBack();
   }
@@ -52,6 +56,14 @@ void main() {
       expect(find.widgetWithText(AppBar, 'Drop-Off Point'), findsOneWidget);
     },
   );
+
+  testWidgets('Drawer bersama memuat navigasi Upcycling', (tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.tap(find.byTooltip('Open navigation menu'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Upcycling'), findsOneWidget);
+  });
 
   test('formatRupiah memakai pemisah ribuan titik', () {
     expect(formatRupiah(0), 'Rp0');

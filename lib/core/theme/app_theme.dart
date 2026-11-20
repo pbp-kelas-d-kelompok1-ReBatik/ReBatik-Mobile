@@ -21,7 +21,8 @@ class AppTheme {
       useMaterial3: true,
       fontFamily: AppFonts.garamond,
       colorScheme: colorScheme,
-      scaffoldBackgroundColor: AppColors.homeCream,
+      // Transparan agar gradient global pada MaterialApp terlihat di tiap route.
+      scaffoldBackgroundColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.navbarStart,
         foregroundColor: AppColors.navbarText,

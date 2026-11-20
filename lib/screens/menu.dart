@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:rebatik_mobile/core/theme/app_colors.dart';
+import 'package:rebatik_mobile/core/widgets/rebatik_app_bar.dart';
 import 'package:rebatik_mobile/screens/batik_custom/batik_custom_page.dart';
 import 'package:rebatik_mobile/screens/batik_story/batik_story_page.dart';
+import 'package:rebatik_mobile/widgets/left_drawer.dart';
 
 import 'donasi/donasi_page.dart';
 import 'marketplace/screens/dropoff_list_page.dart';
@@ -14,17 +17,10 @@ class ReBatikPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFAF7F0),
+      backgroundColor: Colors.transparent,
 
-      appBar: AppBar(
-        title: const Text(
-          'ReBatik',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: const Color(0xFF795548),
-        foregroundColor: Colors.white,
-        elevation: 0,
-      ),
+      appBar: rebatikAppBar('ReBatik'),
+      drawer: const LeftDrawer(),
 
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -38,7 +34,7 @@ class ReBatikPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF5D4037),
+                color: AppColors.brownDark,
               ),
             ),
 
@@ -46,7 +42,11 @@ class ReBatikPage extends StatelessWidget {
 
             const Text(
               'Mari mengenal dan melestarikan warisan budaya batik Indonesia bersama ReBatik.',
-              style: TextStyle(fontSize: 15, color: Colors.brown, height: 1.5),
+              style: TextStyle(
+                fontSize: 15,
+                color: AppColors.brownMuted,
+                height: 1.5,
+              ),
             ),
 
             const SizedBox(height: 30),
@@ -56,7 +56,7 @@ class ReBatikPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 19,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF5D4037),
+                color: AppColors.brownDark,
               ),
             ),
 
@@ -67,11 +67,11 @@ class ReBatikPage extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.card,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.brown.withValues(alpha: 0.10),
+                    color: AppColors.cardShadow,
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -84,7 +84,7 @@ class ReBatikPage extends StatelessWidget {
                   const Icon(
                     Icons.volunteer_activism,
                     size: 45,
-                    color: Color(0xFF795548),
+                    color: AppColors.brown,
                   ),
 
                   const SizedBox(height: 15),
@@ -94,7 +94,7 @@ class ReBatikPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF5D4037),
+                      color: AppColors.brownDark,
                     ),
                   ),
 
@@ -134,7 +134,7 @@ class ReBatikPage extends StatelessWidget {
                       ),
 
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF795548),
+                        backgroundColor: AppColors.brown,
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),

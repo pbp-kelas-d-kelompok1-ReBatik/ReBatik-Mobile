@@ -18,7 +18,7 @@ class ReBatikScaffold extends StatelessWidget {
     this.bottomNavigationBar,
     this.showBackButton = true,
     this.showLogo = true,
-    this.useGradientBackground = false,
+    this.useGradientBackground = true,
     this.backgroundColor,
     this.resizeToAvoidBottomInset = true,
     super.key,

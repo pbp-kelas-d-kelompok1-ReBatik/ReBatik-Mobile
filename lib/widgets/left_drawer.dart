@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:rebatik_mobile/core/constants/app_assets.dart';
+import 'package:rebatik_mobile/core/theme/app_colors.dart';
+import 'package:rebatik_mobile/core/theme/app_fonts.dart';
 import 'package:rebatik_mobile/screens/batik_custom/batik_custom_page.dart';
 import 'package:rebatik_mobile/screens/batik_story/batik_story_page.dart';
 import 'package:rebatik_mobile/screens/donasi/donasi_page.dart';
 import 'package:rebatik_mobile/screens/menu.dart';
+import 'package:rebatik_mobile/screens/upcycling/upcycling_page.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -12,27 +16,31 @@ class LeftDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(color: Color(0xFF795548)),
+          DrawerHeader(
+            decoration: const BoxDecoration(color: AppColors.navbarStart),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                Image.asset(AppAssets.logo, width: 36, height: 36),
+                const SizedBox(height: 2),
+                const Text(
                   'ReBatik',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 30,
+                    fontFamily: AppFonts.garamond,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: AppColors.navbarText,
                   ),
                 ),
-                Padding(padding: EdgeInsets.all(8)),
-                Text(
+                const SizedBox(height: 2),
+                const Text(
                   'Lestarikan batik, beri kain bekas hidup kedua.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
+                    fontFamily: AppFonts.plusJakartaSans,
+                    fontSize: 10,
+                    color: AppColors.navbarText,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
@@ -65,7 +73,9 @@ class LeftDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const BatikCustomPage()),
+                MaterialPageRoute(
+                  builder: (context) => const BatikCustomPage(),
+                ),
               );
             },
           ),
@@ -76,6 +86,16 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const DonasiPage()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.autorenew),
+            title: const Text('Upcycling'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const UpcyclingPage()),
               );
             },
           ),

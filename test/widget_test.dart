@@ -14,28 +14,41 @@ Future<void> _tapMenuButton(WidgetTester tester, String label) async {
 }
 
 Future<void> _goBack(WidgetTester tester) async {
-  await tester.pageBack();
+  final rebatikBackButton = find.byTooltip('Kembali');
+  if (rebatikBackButton.evaluate().isNotEmpty) {
+    await tester.tap(rebatikBackButton);
+  } else {
+    await tester.pageBack();
+  }
   await tester.pumpAndSettle();
 }
 
 void main() {
-  testWidgets('Halaman utama membuka Donasi, Marketplace, dan Drop-Off Point',
-      (tester) async {
-    await tester.pumpWidget(const MyApp());
-    expect(find.text('Selamat Datang di ReBatik!'), findsOneWidget);
+  testWidgets(
+    'Halaman utama membuka Donasi, Upcycling, Marketplace, dan Drop-Off Point',
+    (tester) async {
+      await tester.pumpWidget(const MyApp());
+      expect(find.text('Selamat Datang di ReBatik!'), findsOneWidget);
 
-    await _tapMenuButton(tester, 'Buka Halaman Donasi');
-    expect(find.text('Donasi ReBatik'), findsOneWidget);
-    await _goBack(tester);
+      await _tapMenuButton(tester, 'Buka Halaman Donasi');
+      expect(find.text('Donasi ReBatik'), findsOneWidget);
+      await _goBack(tester);
 
-    await _tapMenuButton(tester, 'Buka Marketplace');
-    expect(find.widgetWithText(AppBar, 'Marketplace'), findsOneWidget);
-    expect(find.text('Cari produk, motif, atau pengrajin'), findsOneWidget);
-    await _goBack(tester);
+      await _tapMenuButton(tester, 'Buka Upcycling');
+      expect(find.widgetWithText(AppBar, 'Upcycling'), findsOneWidget);
+      expect(find.text('Permintaan Saya'), findsOneWidget);
+      expect(find.text('Belum ada permintaan'), findsOneWidget);
+      await _goBack(tester);
 
-    await _tapMenuButton(tester, 'Lihat Drop-Off Point');
-    expect(find.widgetWithText(AppBar, 'Drop-Off Point'), findsOneWidget);
-  });
+      await _tapMenuButton(tester, 'Buka Marketplace');
+      expect(find.widgetWithText(AppBar, 'Marketplace'), findsOneWidget);
+      expect(find.text('Cari produk, motif, atau pengrajin'), findsOneWidget);
+      await _goBack(tester);
+
+      await _tapMenuButton(tester, 'Lihat Drop-Off Point');
+      expect(find.widgetWithText(AppBar, 'Drop-Off Point'), findsOneWidget);
+    },
+  );
 
   test('formatRupiah memakai pemisah ribuan titik', () {
     expect(formatRupiah(0), 'Rp0');

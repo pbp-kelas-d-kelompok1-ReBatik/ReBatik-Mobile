@@ -4,6 +4,7 @@ import 'donasi/donasi_page.dart';
 import 'marketplace/screens/dropoff_list_page.dart';
 import 'marketplace/screens/product_list_page.dart';
 import 'marketplace/widgets/menu_card.dart';
+import 'upcycling/upcycling_page.dart';
 
 class ReBatikPage extends StatelessWidget {
   const ReBatikPage({super.key});
@@ -143,20 +144,28 @@ class ReBatikPage extends StatelessWidget {
               ),
             ),
 
+            // MENU UPCYCLING
+            MenuCard(
+              icon: Icons.autorenew,
+              title: 'Upcycling Kain',
+              description:
+                  'Ubah kain tak terpakai menjadi karya baru yang bernilai.',
+              buttonLabel: 'Buka Upcycling',
+              destination: (context) => const UpcyclingPage(),
+            ),
+
             // MENU MARKETPLACE & DROP-OFF POINT (Modul 3)
             MenuCard(
               icon: Icons.storefront,
               title: 'Marketplace Upcycling',
-              description:
-                  'Belanja produk hasil upcycling kain dan pakaian bekas bermotif batik.',
+              description: 'Belanja produk hasil upcycling kain dan pakaian bekas bermotif batik.',
               buttonLabel: 'Buka Marketplace',
               destination: (context) => const ProductListPage(),
             ),
             MenuCard(
               icon: Icons.place,
               title: 'Drop-Off Point',
-              description:
-                  'Temukan lokasi pengumpulan kain atau pakaian bekas terdekat.',
+              description: 'Temukan lokasi pengumpulan kain atau pakaian bekas terdekat.',
               buttonLabel: 'Lihat Drop-Off Point',
               destination: (context) => const DropOffListPage(),
             ),

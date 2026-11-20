@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:rebatik_mobile/screens/batik_story/batik_story_page.dart';
+import 'package:rebatik_mobile/screens/donasi/donasi_page.dart';
+
 /// Model data untuk satu tombol menu di halaman utama.
 class ItemHomepage {
   final String name;
@@ -37,10 +40,10 @@ class ItemCard extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const BatikStoryPage()),
             );
           } else if (item.name == 'Batik Custom') {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const BatikCustomPage()),
-            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => const BatikCustomPage()),
+            // );
           } else if (item.name == 'Donasi') {
             Navigator.push(
               context,

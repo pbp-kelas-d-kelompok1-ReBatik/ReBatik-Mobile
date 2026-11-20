@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rebatik_mobile/pages/widgets/info_card.dart';
-import 'package:rebatik_mobile/pages/widgets/item_card.dart';
-import 'package:rebatik_mobile/pages/widgets/left_drawer.dart';
-
+import 'package:rebatik_mobile/widgets/info_card.dart';
+import 'package:rebatik_mobile/widgets/left_drawer.dart';
+import 'package:rebatik_mobile/widgets/item_card.dart';
 
 class ReBatikPage extends StatelessWidget {
   ReBatikPage({super.key});

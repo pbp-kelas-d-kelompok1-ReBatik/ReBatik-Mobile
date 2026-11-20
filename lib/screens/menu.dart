@@ -77,7 +77,6 @@ class ReBatikPage extends StatelessWidget {
                   ),
                 ],
               ),
-
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -122,9 +121,7 @@ class ReBatikPage extends StatelessWidget {
                           ),
                         );
                       },
-
                       icon: const Icon(Icons.favorite, color: Colors.white),
-
                       label: const Text(
                         'Buka Halaman Donasi',
                         style: TextStyle(
@@ -132,7 +129,6 @@ class ReBatikPage extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.brown,
                         padding: const EdgeInsets.symmetric(vertical: 15),
@@ -174,7 +170,7 @@ class ReBatikPage extends StatelessWidget {
               destination: (context) => const BatikCustomPage(),
             ),
 
-            // MENU MARKETPLACE & DROP-OFF POINT (Modul 3)
+            // MENU MARKETPLACE
             MenuCard(
               icon: Icons.storefront,
               title: 'Marketplace Upcycling',
@@ -182,6 +178,8 @@ class ReBatikPage extends StatelessWidget {
               buttonLabel: 'Buka Marketplace',
               destination: (context) => const ProductListPage(),
             ),
+
+            // MENU DROP-OFF POINT
             MenuCard(
               icon: Icons.place,
               title: 'Drop-Off Point',

@@ -14,29 +14,55 @@ Future<void> _tapMenuButton(WidgetTester tester, String label) async {
 }
 
 Future<void> _goBack(WidgetTester tester) async {
-  await tester.pageBack();
+  final pageBackButton = find.text('Kembali ke ReBatik');
+  final rebatikBackButton = find.byTooltip('Kembali');
+  if (pageBackButton.evaluate().isNotEmpty) {
+    await tester.tap(pageBackButton);
+  } else if (rebatikBackButton.evaluate().isNotEmpty) {
+    await tester.tap(rebatikBackButton);
+  } else if (find.byTooltip('Open navigation menu').evaluate().isNotEmpty) {
+    await tester.tap(find.byTooltip('Open navigation menu'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Beranda'));
+  } else {
+    await tester.pageBack();
+  }
   await tester.pumpAndSettle();
 }
 
 void main() {
-  testWidgets('Halaman utama membuka Donasi, Marketplace, dan Drop-Off Point', (
-    WidgetTester tester,
-  ) async {
+  testWidgets(
+    'Halaman utama membuka Donasi, Upcycling, Marketplace, dan Drop-Off Point',
+    (tester) async {
+      await tester.pumpWidget(const MyApp());
+      expect(find.text('Selamat Datang di ReBatik!'), findsOneWidget);
+
+      await _tapMenuButton(tester, 'Buka Halaman Donasi');
+      expect(find.text('Donasi ReBatik'), findsOneWidget);
+      await _goBack(tester);
+
+      await _tapMenuButton(tester, 'Buka Upcycling');
+      expect(find.widgetWithText(AppBar, 'Upcycling'), findsOneWidget);
+      expect(find.text('Permintaan Saya'), findsOneWidget);
+      expect(find.text('Belum ada permintaan'), findsOneWidget);
+      await _goBack(tester);
+
+      await _tapMenuButton(tester, 'Buka Marketplace');
+      expect(find.widgetWithText(AppBar, 'Marketplace'), findsOneWidget);
+      expect(find.text('Cari produk, motif, atau pengrajin'), findsOneWidget);
+      await _goBack(tester);
+
+      await _tapMenuButton(tester, 'Lihat Drop-Off Point');
+      expect(find.widgetWithText(AppBar, 'Drop-Off Point'), findsOneWidget);
+    },
+  );
+
+  testWidgets('Drawer bersama memuat navigasi Upcycling', (tester) async {
     await tester.pumpWidget(const MyApp());
+    await tester.tap(find.byTooltip('Open navigation menu'));
+    await tester.pumpAndSettle();
 
-    expect(find.text('Selamat Datang di ReBatik!'), findsOneWidget);
-
-    await _tapMenuButton(tester, 'Buka Halaman Donasi');
-    expect(find.text('Donasi ReBatik'), findsOneWidget);
-    await _goBack(tester);
-
-    await _tapMenuButton(tester, 'Buka Marketplace');
-    expect(find.widgetWithText(AppBar, 'Marketplace'), findsOneWidget);
-    expect(find.text('Cari produk, motif, atau pengrajin'), findsOneWidget);
-    await _goBack(tester);
-
-    await _tapMenuButton(tester, 'Lihat Drop-Off Point');
-    expect(find.widgetWithText(AppBar, 'Drop-Off Point'), findsOneWidget);
+    expect(find.text('Upcycling'), findsOneWidget);
   });
 
   test('formatRupiah memakai pemisah ribuan titik', () {

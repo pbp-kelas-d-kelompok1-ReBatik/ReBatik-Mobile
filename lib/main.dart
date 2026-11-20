@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:rebatik_mobile/core/theme/app_theme.dart';
+import 'package:rebatik_mobile/core/theme/app_gradients.dart';
 import 'package:rebatik_mobile/screens/menu.dart';
 
 void main() {
@@ -13,19 +15,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'ReBatik Mobile',
+      title: 'ReBatik',
 
-      // Theme aplikasi
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.brown),
-        useMaterial3: true,
+      // Tema bersama menjaga warna, font, dan komponen seluruh modul konsisten.
+      theme: AppTheme.light,
+
+      // Gradient web dipasang di belakang seluruh route aplikasi.
+      builder: (context, child) => DecoratedBox(
+        decoration: const BoxDecoration(gradient: AppGradients.hero),
+        child: child ?? const SizedBox.shrink(),
       ),
 
       // Halaman utama aplikasi
-      home:  ReBatikPage(),
+      home: const ReBatikPage(),
 
       // Daftar navigasi halaman
-      routes: {'/rebatik': (context) =>  ReBatikPage()},
+      routes: {'/rebatik': (context) => const ReBatikPage()},
     );
   }
 }

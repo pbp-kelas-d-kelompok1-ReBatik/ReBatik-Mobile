@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:rebatik_mobile/data/batik_data.dart';
 import 'package:rebatik_mobile/models/batik_motif.dart';
 import 'package:rebatik_mobile/screens/batik_story/batik_story_detail_page.dart';
-
 import 'package:rebatik_mobile/widgets/left_drawer.dart';
 
 class BatikStoryPage extends StatefulWidget {

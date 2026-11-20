@@ -1,11 +1,11 @@
 {
-    "name": "rebatik_mobile",
-    "short_name": "rebatik_mobile",
+    "name": "ReBatik",
+    "short_name": "ReBatik",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#FFF8ED",
+    "theme_color": "#4A2E23",
+    "description": "Aplikasi mobile ReBatik untuk upcycling dan pelestarian batik.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

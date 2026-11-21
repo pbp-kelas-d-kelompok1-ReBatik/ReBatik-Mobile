@@ -32,13 +32,18 @@ Future<void> _goBack(WidgetTester tester) async {
 
 void main() {
   testWidgets(
-    'Halaman utama membuka Donasi, Upcycling, Marketplace, dan Drop-Off Point',
+    'Halaman utama membuka Donasi, Upcycling, Rewards, Marketplace, dan Drop-Off Point',
     (tester) async {
       await tester.pumpWidget(const MyApp());
       expect(find.text('Selamat Datang di ReBatik!'), findsOneWidget);
 
       await _tapMenuButton(tester, 'Buka Halaman Donasi');
       expect(find.text('Donasi ReBatik'), findsOneWidget);
+      await _goBack(tester);
+
+      await _tapMenuButton(tester, 'Lihat Rewards');
+      expect(find.widgetWithText(AppBar, 'Points & Rewards'), findsOneWidget);
+      expect(find.text('Menuju Penenun Mahir'), findsOneWidget);
       await _goBack(tester);
 
       await _tapMenuButton(tester, 'Buka Upcycling');
@@ -57,12 +62,25 @@ void main() {
     },
   );
 
-  testWidgets('Drawer bersama memuat navigasi Upcycling', (tester) async {
+  testWidgets('Drawer membuka Rewards, Marketplace, dan Drop-Off Point', (
+    tester,
+  ) async {
     await tester.pumpWidget(const MyApp());
-    await tester.tap(find.byTooltip('Open navigation menu'));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Upcycling'), findsOneWidget);
+    for (final title in ['Points & Rewards', 'Marketplace', 'Drop-Off Point']) {
+      await tester.tap(find.byTooltip('Open navigation menu'));
+      await tester.pumpAndSettle();
+      final drawer = find.byType(Drawer);
+      expect(
+        find.descendant(of: drawer, matching: find.text('Upcycling')),
+        findsOneWidget,
+      );
+      final item = find.descendant(of: drawer, matching: find.text(title));
+      await tester.ensureVisible(item);
+      await tester.pumpAndSettle();
+      await tester.tap(item);
+      await tester.pumpAndSettle();
+      expect(find.widgetWithText(AppBar, title), findsOneWidget);
+    }
   });
 
   test('formatRupiah memakai pemisah ribuan titik', () {

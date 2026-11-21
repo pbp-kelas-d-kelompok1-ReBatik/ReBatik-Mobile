@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rebatik_mobile/widgets/left_drawer.dart';
 
 import '../marketplace_style.dart';
 import '../models/dropoff_point.dart';
@@ -6,7 +7,9 @@ import '../services/marketplace_service.dart';
 import '../widgets/async_states.dart';
 
 class DropOffListPage extends StatefulWidget {
-  const DropOffListPage({super.key});
+  const DropOffListPage({super.key, this.showDrawer = false});
+
+  final bool showDrawer;
 
   @override
   State<DropOffListPage> createState() => _DropOffListPageState();
@@ -45,6 +48,7 @@ class _DropOffListPageState extends State<DropOffListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: widget.showDrawer ? const LeftDrawer() : null,
       backgroundColor: AppColors.background,
       appBar: marketplaceAppBar('Drop-Off Point'),
       body: Column(

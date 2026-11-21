@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rebatik_mobile/widgets/left_drawer.dart';
 
 import '../marketplace_style.dart';
 import '../models/product.dart';
@@ -9,7 +10,9 @@ import 'dropoff_list_page.dart';
 import 'product_detail_page.dart';
 
 class ProductListPage extends StatefulWidget {
-  const ProductListPage({super.key});
+  const ProductListPage({super.key, this.showDrawer = false});
+
+  final bool showDrawer;
 
   @override
   State<ProductListPage> createState() => _ProductListPageState();
@@ -56,6 +59,7 @@ class _ProductListPageState extends State<ProductListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: widget.showDrawer ? const LeftDrawer() : null,
       backgroundColor: AppColors.background,
       appBar: marketplaceAppBar(
         'Marketplace',

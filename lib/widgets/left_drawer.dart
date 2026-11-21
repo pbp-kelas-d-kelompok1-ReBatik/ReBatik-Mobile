@@ -5,8 +5,11 @@ import 'package:rebatik_mobile/core/theme/app_fonts.dart';
 import 'package:rebatik_mobile/screens/batik_custom/batik_custom_page.dart';
 import 'package:rebatik_mobile/screens/batik_story/batik_story_page.dart';
 import 'package:rebatik_mobile/screens/donasi/donasi_page.dart';
+import 'package:rebatik_mobile/screens/marketplace/screens/dropoff_list_page.dart';
+import 'package:rebatik_mobile/screens/marketplace/screens/product_list_page.dart';
 import 'package:rebatik_mobile/screens/menu.dart';
 import 'package:rebatik_mobile/screens/upcycling/upcycling_page.dart';
+import 'package:rebatik_mobile/screens/rewards/rewards_page.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -98,6 +101,36 @@ class LeftDrawer extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const UpcyclingPage()),
               );
             },
+          ),
+          ListTile(
+            leading: const Icon(Icons.redeem),
+            title: const Text('Points & Rewards'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const RewardsPage()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.storefront),
+            title: const Text('Marketplace'),
+            onTap: () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const ProductListPage(showDrawer: true),
+              ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.place),
+            title: const Text('Drop-Off Point'),
+            onTap: () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const DropOffListPage(showDrawer: true),
+              ),
+            ),
           ),
         ],
       ),

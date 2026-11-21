@@ -10,6 +10,7 @@ import 'marketplace/screens/dropoff_list_page.dart';
 import 'marketplace/screens/product_list_page.dart';
 import 'marketplace/widgets/menu_card.dart';
 import 'upcycling/upcycling_page.dart';
+import 'rewards/rewards_page.dart';
 
 class ReBatikPage extends StatelessWidget {
   const ReBatikPage({super.key});
@@ -150,6 +151,15 @@ class ReBatikPage extends StatelessWidget {
                   'Ubah kain tak terpakai menjadi karya baru yang bernilai.',
               buttonLabel: 'Buka Upcycling',
               destination: (context) => const UpcyclingPage(),
+            ),
+
+            // MENU POINTS & REWARDS
+            MenuCard(
+              icon: Icons.redeem,
+              title: 'Points & Rewards',
+              description: 'Kumpulkan poin ReBatik dan tukarkan dengan voucher Marketplace.',
+              buttonLabel: 'Lihat Rewards',
+              destination: (context) => const RewardsPage(),
             ),
 
             // MENU BATIK STORY

@@ -1,9 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Akses API Django ReBatik (PWS / server lokal) -->
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="ReBatik"
         android:usesCleartextTraffic="true"
+        android:label="myportofolio_mobile"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -17,8 +17,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+
     env:
       API_BASE_URL: ${{ vars.API_BASE_URL }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -28,10 +30,19 @@ jobs:
           cache: true
 
       - name: Versi Flutter/Dart
-        run: flutter --version
+        run: |
+          flutter --version
+          dart --version
 
       - name: Install dependencies
         run: flutter pub get
+
+      - name: Verify dependencies
+        run: |
+          pwd
+          test -f pubspec.yaml
+          test -f .dart_tool/package_config.json
+          dart pub deps --style=compact | grep build_runner
 
       - name: Generate json_serializable files
         run: dart run build_runner build --delete-conflicting-outputs
@@ -43,7 +54,9 @@ jobs:
         run: flutter test
 
       - name: Build release APK
-        run: flutter build apk --release --dart-define=API_BASE_URL="${API_BASE_URL:-http://10.0.2.2:8000}"
+        run: |
+          flutter build apk --release \
+            --dart-define=API_BASE_URL="${API_BASE_URL:-http://10.0.2.2:8000}"
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
